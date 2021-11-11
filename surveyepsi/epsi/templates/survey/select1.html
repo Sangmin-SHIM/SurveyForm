@@ -5,7 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-Home Home Sweet Home
-
+<p>Enter your grade : </p>
+    <ul>
+    {% for results in grade %}
+    <li><a href="{% url 'grade' results.grade_code %}">{{results.grade}}</a></li>
+    {%endfor%}
+    </ul>
 </body>
+
 </html>

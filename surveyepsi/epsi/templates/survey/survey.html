@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for result in professeur %}
+<h1> {{result.professeur}}</h1>
+<h2> {{result.cours_donne}}</h2>
+<h3> {{result.grade}}</h3>
+<a href="/epsi/{{result.grade_code}}/{{result.idx}}/success">
+    {% endfor%}
+
+{{question.0}}
+
+
+
+
+</body>
+</html>

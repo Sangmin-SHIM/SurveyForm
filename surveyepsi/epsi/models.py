@@ -1,12 +1,13 @@
 from django.db import models
 
+
 # Create your models here.
 class Professeur(models.Model):
+
     idx = models.AutoField(primary_key=True)
     professeur = models.CharField(max_length=30)
-    professeur_code = models.IntegerField()
     grade = models.CharField(max_length=10)
-    grade_code = models.IntegerField()
+    grade_code = models.IntegerField(null=True)
     cours_donne = models.CharField(max_length=30)
 
 
@@ -42,3 +43,13 @@ class Answer(models.Model):
     class Meta:
         verbose_name_plural = "Answer"
 
+class Grade(models.Model):
+    idx = models.AutoField(primary_key=True)
+    grade = models.CharField(max_length=10)
+    grade_code = models.IntegerField(default='1')
+
+    class Meta:
+        verbose_name_plural = "Grade"
+
+    def __str__(self):
+        return self.grade
