@@ -34,6 +34,9 @@ class Etudiant(models.Model):
     class Meta:
         verbose_name_plural = "Etudiant"
 
+    def __str__(self):
+        return str(self.idx)
+
 class Answer(models.Model):
     idx = models.AutoField(primary_key=True)
     response = models.CharField(max_length=120)
@@ -42,6 +45,9 @@ class Answer(models.Model):
 
     class Meta:
         verbose_name_plural = "Answer"
+
+    def __str__(self):
+        return self.response
 
 class Grade(models.Model):
     idx = models.AutoField(primary_key=True)

@@ -29,7 +29,12 @@ class EtudiantAdmin(admin.ModelAdmin):
     readonly_fields = ["professeur_idx"]
 
 class AnswerAdmin(admin.ModelAdmin):
-    readonly_fields = ["question_idx", "etudiant_idx"]
+    list_display = ("question_idx",
+                    "response",
+                    "etudiant_idx")
+    readonly_fields = ["response","question_idx", "etudiant_idx"]
+    ordering = ('idx',)
+
 
 class QuestionAdmin(admin.ModelAdmin):
     ordering = ('idx',)

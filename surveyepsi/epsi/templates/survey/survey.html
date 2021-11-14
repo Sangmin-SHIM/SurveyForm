@@ -9,13 +9,181 @@
 <h1> {{result.professeur}}</h1>
 <h2> {{result.cours_donne}}</h2>
 <h3> {{result.grade}}</h3>
-<a href="/epsi/{{result.grade_code}}/{{result.idx}}/success">
     {% endfor%}
 
-{{question.0}}
+<form action = "/epsi/{{professeur.0.grade_code}}/{{professeur.0.idx}}/success/" method="post">
 
+    {% csrf_token%}
+    {{question.0}}
+    <br>
+    <textarea name="content1" id="content1" row="15"></textarea>
+    <br>
+    <br>
 
+    {{question.1}}
+    <br>
+    <input type="radio" id="question2_1" name="question2" value="Pas Satisfait" required>
+    <label for="question2_1">Pas Satisfait</label><br>
+    <input type="radio" id="question2_2" name="question2" value="Peu Satisfait">
+    <label for="question2_2">Peu Satisfait</label><br>
+    <input type="radio" id="question2_3" name="question2" value="Assez Satisfait">
+    <label for="question2_3">Assez Satisfait</label><br>
+    <input type="radio" id="question2_4" name="question2" value="Très Satisfait">
+    <label for="question2_4">Très Satisfait</label><br><br>
+    <br>
 
+    {{question.2}}
+    <br>
+    <input type="radio" id="question3_1" name="question3" value="Pas Satisfait" required>
+    <label for="question3_1">Pas Satisfait</label><br>
+    <input type="radio" id="question3_2" name="question3" value="Peu Satisfait">
+    <label for="question3_2">Peu Satisfait</label><br>
+    <input type="radio" id="question3_3" name="question3" value="Assez Satisfait">
+    <label for="question3_3">Assez Satisfait</label><br>
+    <input type="radio" id="question3_4" name="question3" value="Très Satisfait">
+    <label for="question3_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.3}}
+    <br>
+    <input type="radio" id="question4_1" name="question4" value="Pas Satisfait" required>
+    <label for="question4_1">Pas Satisfait</label><br>
+    <input type="radio" id="question4_2" name="question4" value="Peu Satisfait">
+    <label for="question4_2">Peu Satisfait</label><br>
+    <input type="radio" id="question4_3" name="question4" value="Assez Satisfait">
+    <label for="question4_3">Assez Satisfait</label><br>
+    <input type="radio" id="question4_4" name="question4" value="Très Satisfait">
+    <label for="question4_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.4}}
+    <br>
+    <textarea name="content2" id="content2" row="15"></textarea>
+    <br>
+    <br>
+
+    {{question.5}}
+    <br>
+    <input type="radio" id="question5_1" name="question5" value="Pas Satisfait" required>
+    <label for="question5_1">Pas Satisfait</label><br>
+    <input type="radio" id="question5_2" name="question5" value="Peu Satisfait">
+    <label for="question5_2">Peu Satisfait</label><br>
+    <input type="radio" id="question5_3" name="question5" value="Assez Satisfait" >
+    <label for="question5_3">Assez Satisfait</label><br>
+    <input type="radio" id="question5_4" name="question5" value="Très Satisfait">
+    <label for="question5_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.6}}
+    <br>
+    <input type="radio" id="question6_1" name="question6" value="Pas Satisfait" required>
+    <label for="question6_1">Pas Satisfait</label><br>
+    <input type="radio" id="question6_2" name="question6" value="Peu Satisfait">
+    <label for="question6_2">Peu Satisfait</label><br>
+    <input type="radio" id="question6_3" name="question6" value="Assez Satisfait">
+    <label for="question4_3">Assez Satisfait</label><br>
+    <input type="radio" id="question6_4" name="question6" value="Très Satisfait">
+    <label for="question6_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.7}}
+    <br>
+    <input type="radio" id="question7_1" name="question7" value="Pas Satisfait" required>
+    <label for="question7_1">Pas Satisfait</label><br>
+    <input type="radio" id="question7_2" name="question7" value="Peu Satisfait">
+    <label for="question7_2">Peu Satisfait</label><br>
+    <input type="radio" id="question7_3" name="question7" value="Assez Satisfait">
+    <label for="question7_3">Assez Satisfait</label><br>
+    <input type="radio" id="question7_4" name="question7" value="Très Satisfait">
+    <label for="question7_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.8}}
+    <br>
+    <input type="radio" id="question8_1" name="question8" value="Pas Satisfait" required>
+    <label for="question8_1">Pas Satisfait</label><br>
+    <input type="radio" id="question8_2" name="question8" value="Peu Satisfait">
+    <label for="question8_2">Peu Satisfait</label><br>
+    <input type="radio" id="question8_3" name="question8" value="Assez Satisfait">
+    <label for="question8_3">Assez Satisfait</label><br>
+    <input type="radio" id="question8_4" name="question8" value="Très Satisfait">
+    <label for="question8_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.9}}
+    <br>
+    <textarea name="content3" id="content3" row="15"></textarea>
+    <br>
+    <br>
+
+    {{question.10}}
+    <br>
+    <input type="radio" id="question9_1" name="question9" value="Pas Satisfait" required>
+    <label for="question9_1">Pas Satisfait</label><br>
+    <input type="radio" id="question9_2" name="question9" value="Peu Satisfait">
+    <label for="question9_2">Peu Satisfait</label><br>
+    <input type="radio" id="question9_3" name="question9" value="Assez Satisfait">
+    <label for="question9_3">Assez Satisfait</label><br>
+    <input type="radio" id="question9_4" name="question9" value="Très Satisfait">
+    <label for="question9_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.11}}
+    <br>
+    <input type="radio" id="question10_1" name="question10" value="Pas Satisfait" required>
+    <label for="question10_1">Pas Satisfait</label><br>
+    <input type="radio" id="question10_2" name="question10" value="Peu Satisfait">
+    <label for="question10_2">Peu Satisfait</label><br>
+    <input type="radio" id="question10_3" name="question10" value="Assez Satisfait">
+    <label for="question10_3">Assez Satisfait</label><br>
+    <input type="radio" id="question10_4" name="question10" value="Très Satisfait">
+    <label for="question10_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.12}}
+    <br>
+    <input type="radio" id="question11_1" name="question11" value="Pas Satisfait" required>
+    <label for="question11_1">Pas Satisfait</label><br>
+    <input type="radio" id="question11_2" name="question11" value="Peu Satisfait">
+    <label for="question11_2">Peu Satisfait</label><br>
+    <input type="radio" id="question11_3" name="question11" value="Assez Satisfait">
+    <label for="question11_3">Assez Satisfait</label><br>
+    <input type="radio" id="question11_4" name="question11" value="Très Satisfait">
+    <label for="question11_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.13}}
+    <br>
+    <input type="radio" id="question12_1" name="question12" value="Pas Satisfait" required>
+    <label for="question12_1">Pas Satisfait</label><br>
+    <input type="radio" id="question12_2" name="question12" value="Peu Satisfait">
+    <label for="question12_2">Peu Satisfait</label><br>
+    <input type="radio" id="question12_3" name="question12" value="Assez Satisfait">
+    <label for="question12_3">Assez Satisfait</label><br>
+    <input type="radio" id="question12_4" name="question12" value="Très Satisfait">
+    <label for="question12_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.14}}
+    <br>
+    <input type="radio" id="question13_1" name="question13" value="Pas Satisfait" required>
+    <label for="question13_1">Pas Satisfait</label><br>
+    <input type="radio" id="question13_2" name="question13" value="Peu Satisfait">
+    <label for="question13_2">Peu Satisfait</label><br>
+    <input type="radio" id="question13_3" name="question13" value="Assez Satisfait">
+    <label for="question13_3">Assez Satisfait</label><br>
+    <input type="radio" id="question13_4" name="question13" value="Très Satisfait">
+    <label for="question13_4">Très Satisfait</label><br><br>
+    <br>
+
+    {{question.15}}
+    <br>
+    <textarea name="content4" id="content4" row="15"></textarea>
+    <br>
+    <br>
+
+<input type="submit" value="Envoyer">
+</form>
 
 </body>
 </html>

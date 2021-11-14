@@ -22,6 +22,7 @@ def detail(request, grade_code):
     context = {'professeur': professeur}
     return render(request, "survey/select2.html", context)
 
+
 def survey(request, grade_code, idx):
     professeur = Professeur.objects.filter(grade_code = grade_code).filter(idx = idx)
     question = Question.objects.all()
@@ -33,13 +34,62 @@ def survey(request, grade_code, idx):
 
     return render(request, "survey/survey.html", context)
 
-def success(request,grade_code,idx):
+
+def success(request, grade_code, idx):
+    ''' Etudiant'''
     professeur = get_object_or_404(Professeur, pk=idx)
     etudiant = Etudiant(professeur_idx_id=professeur.idx)
     etudiant.save()
-    '''etudiant = Etudiant(professeur_idx=)
-    answer = Answer.objects.all()'''
+
+    ''' Answer'''
+    print("etudiant")
+    ''' etuidnat의 idx'''
+
+    answer1 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=1, response=request.POST.get('content1'))
+
+    answer2 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=2, response=request.POST.get('question2'))
+    answer3 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=3, response=request.POST.get('question3'))
+    answer4 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=4, response=request.POST.get('question4'))
+
+    answer5 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=5, response=request.POST.get('content2'))
+
+    answer6 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=6, response=request.POST.get('question5'))
+    answer7 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=7, response=request.POST.get('question6'))
+    answer8 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=8, response=request.POST.get('question7'))
+    answer9 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=9, response=request.POST.get('question8'))
+
+    answer10 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=10, response=request.POST.get('content3'))
+
+    answer11 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=11, response=request.POST.get('question9'))
+    answer12 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=12, response=request.POST.get('question10'))
+    answer13 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=13, response=request.POST.get('question11'))
+    answer14 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=14, response=request.POST.get('question12'))
+    answer15 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=15, response=request.POST.get('question13'))
+
+    answer16 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=16, response=request.POST.get('content4'))
+
+
+    answer1.save()
+    answer2.save()
+    answer3.save()
+    answer4.save()
+    answer5.save()
+    answer6.save()
+    answer7.save()
+    answer8.save()
+    answer9.save()
+    answer10.save()
+    answer11.save()
+    answer12.save()
+    answer13.save()
+    answer14.save()
+    answer15.save()
+    answer16.save()
 
 
 
-    return render(request, "survey/success.html")
+    professeur = Professeur.objects.filter(grade_code = grade_code).filter(idx = idx)
+    context = {'professeur': professeur}
+
+
+    return render(request, "survey/success.html", context)
