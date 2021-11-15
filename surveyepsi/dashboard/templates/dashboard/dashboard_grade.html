@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ICI Professeur avec Grade
+<br>
+<br>
+
+    GRADE:    {{ professeur.0.grade}}
+
+    {% for results in professeur %}
+<h1>{{ results.professeur }}</h1>
+<div><a href="/dashboard/{{results.grade_code}}/{{results.idx}}">{{ results.cours_donne }}</a></div>
+    {%endfor%}
+
+
+</body>
+</html>
