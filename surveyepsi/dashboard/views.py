@@ -12,6 +12,8 @@ def index(request):
 def detail(request, grade_code):
 
     professeur = Professeur.objects.all().filter(grade_code=grade_code)
+    print("context : professeur")
+    print(professeur)
     context = {'professeur': professeur}
 
     return render(request, "dashboard/dashboard_grade.html", context)
@@ -30,7 +32,6 @@ def result(request, grade_code, idx):
         etudiant_queryset_list.append(e)
 
     print("etudiant_queryset_list")
-
     print(etudiant_queryset_list)
 
     etudiant_idx_list =[]
@@ -40,14 +41,17 @@ def result(request, grade_code, idx):
     print("etudiant_idx_list")
     print(etudiant_idx_list)
 
+    question_count = Question.objects.all().count()
+    print(question_count)
 
 
-
-    '''
-    print(etudiant.query)
-    print(etudiant.values("idx"))
-    '''
+    answer_list=[]
+    for i in range(etudiant_count):
+        answer_list.append(Answer.objects.filter(etudiant_idx_id=etudiant_idx_list[i]))
 
 
-    return render(request, "dashboard/dashboard_result.html")
+    context = {'answer_list': answer_list}
+
+
+    return render(request, "dashboard/dashboard_result.html", context)
 

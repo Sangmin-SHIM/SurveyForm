@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-HERE Graph pour
-asd
-
+    {% for results in answer_list %}
+<h1>1st Question : Response - {{ results.0 }}</h1>
+<h1>2nd Question : Response - {{ results.1 }}</h1>
+    {%endfor%}
 </body>
 </html>
