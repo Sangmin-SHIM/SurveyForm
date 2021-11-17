@@ -9,5 +9,15 @@
 <h1>1st Question : Response - {{ results.0 }}</h1>
 <h1>2nd Question : Response - {{ results.1 }}</h1>
     {%endfor%}
+
+<div>
+
+    <h2>   Nombre de reponse :{{answer_list}}</h2>
+        <h3>    {{answer_list.0.0}}</h3>
+        <h3>    {{answer_list.1.0}}</h3>
+        <h4> {{answer_list | length}} </h4>
+
+</div>
+
 </body>
 </html>

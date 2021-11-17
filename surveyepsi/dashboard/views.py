@@ -50,6 +50,10 @@ def result(request, grade_code, idx):
         answer_list.append(Answer.objects.filter(etudiant_idx_id=etudiant_idx_list[i]))
 
 
+    print("answer_list")
+    for i in range(etudiant_count):
+        print(answer_list[i][0])
+
     context = {'answer_list': answer_list}
 
 
