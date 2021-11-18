@@ -5,7 +5,7 @@ def index(request):
     print("Hello")
 
     grade = Grade.objects.all
-
+    
     context= {'grade' : grade}
     return render(request,'dashboard/dashboard_index.html', context)
 
@@ -50,12 +50,34 @@ def result(request, grade_code, idx):
         answer_list.append(Answer.objects.filter(etudiant_idx_id=etudiant_idx_list[i]))
 
 
-    print("answer_list")
+    print("answer_list - 1ere question")
     for i in range(etudiant_count):
         print(answer_list[i][0])
 
-    context = {'answer_list': answer_list}
+    print("answer_list - 2eme question")
+    q2_pas=[]
+    q2_peu=[]
+    q2_assez=[]
+    q2_tres=[]
+    for i in range(etudiant_count):
+        if str(answer_list[i][1]) == 'Pas Satisfait':
+            print(answer_list[i][1])
+            q2_pas.append(answer_list[i][1])
+        elif str(answer_list[i][1]) == 'Peu Satisfait':
+            print(answer_list[i][1])
+            q2_peu.append(answer_list[i][1])
+        elif str(answer_list[i][1]) == 'Assez Satisfait':
+            print(answer_list[i][1])
+            q2_assez.append(answer_list[i][1])
+        elif str(answer_list[i][1]) == 'Très Satisfait':
+            print(answer_list[i][1])
+            q2_tres.append(answer_list[i][1])
 
+    context = {'answer_list': answer_list,
+               'q2_pas' : q2_pas,
+               'q2_peu' : q2_peu,
+               'q2_assez' : q2_assez,
+               'q2_tres': q2_tres,}
 
     return render(request, "dashboard/dashboard_result.html", context)
 

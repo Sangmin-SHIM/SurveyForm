@@ -12,10 +12,19 @@
 
 <div>
 
-    <h2>   Nombre de reponse :{{answer_list}}</h2>
+    <h2>   {{answer_list}}</h2>
         <h3>    {{answer_list.0.0}}</h3>
         <h3>    {{answer_list.1.0}}</h3>
-        <h4> {{answer_list | length}} </h4>
+        --------------------------------------------------------
+        <h1> Nombre de reponse : {{answer_list | length}} </h1>
+        --------------------------------------------------------
+        <h3> Question 2 </h3>
+        --------------------------------------------------------
+        <h5> Pas Satisfait : {{q2_pas | length}}</h5>
+        <h5> Peu Satisfait : {{q2_peu | length }} </h5>
+        <h5> Assez Satisfait : {{q2_assez | length }} </h5>
+        <h5> Très Satisfait : {{q2_tres | length }} </h5>
+        --------------------------------------------------------
 
 </div>
 
