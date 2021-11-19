@@ -42,6 +42,7 @@ class Answer(models.Model):
     response = models.CharField(max_length=120)
     question_idx = models.ForeignKey("Question", on_delete=models.CASCADE)
     etudiant_idx = models.ForeignKey("Etudiant", on_delete=models.CASCADE)
+    professeur_idx = models.ForeignKey("Professeur", on_delete=models.CASCADE,default='0')
 
     class Meta:
         verbose_name_plural = "Answer"

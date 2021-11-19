@@ -3,30 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .chartBox1 {
+            width:300px;
+        }
+    </style>
+    <!--Chart JS CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 </head>
 <body>
-    {% for results in answer_list %}
-<h1>1st Question : Response - {{ results.0 }}</h1>
-<h1>2nd Question : Response - {{ results.1 }}</h1>
+    {% for results in professeur%}
+    {{results.professeur}}
+    <br>
+    {{results.cours_donne}}
     {%endfor%}
-
 <div>
 
-    <h2>   {{answer_list}}</h2>
-        <h3>    {{answer_list.0.0}}</h3>
-        <h3>    {{answer_list.1.0}}</h3>
-        --------------------------------------------------------
-        <h1> Nombre de reponse : {{answer_list | length}} </h1>
         --------------------------------------------------------
         <h3> Question 2 </h3>
         --------------------------------------------------------
-        <h5> Pas Satisfait : {{q2_pas | length}}</h5>
-        <h5> Peu Satisfait : {{q2_peu | length }} </h5>
-        <h5> Assez Satisfait : {{q2_assez | length }} </h5>
-        <h5> Très Satisfait : {{q2_tres | length }} </h5>
-        --------------------------------------------------------
+        {% if answer_list %}
 
+        <h1>QCM - 1), 5), 10) 16) => Next Page</h1>
+        <h2>{{answer_list | length}} Réponses Reçues </h2>
+        ----------------------------------------------------
+            <div class="qcm1">
+            <h2>{{question.1}}</h2>
+            <div class="chartBox1">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q2_pas | length}}
+                    || Peu Satisfait : {{q2_peu | length }}
+                    || Assez Satisfait : {{q2_assez | length }}
+                    || Très Satisfait : {{q2_tres | length }} </p>
+            </div>
+            <script>
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question2',
+                        data: [{{q2_pas | length}},{{q2_peu | length }}, {{q2_assez | length }}, {{q2_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
+        </div>
+        <div>
+            <h2>{{question.2}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.3}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.5}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.6}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.7}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.8}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.10}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.11}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.12}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.13}}</h2>
+
+        </div>
+        <div>
+            <h2>{{question.14}}</h2>
+
+        </div>
+        {% else %}
+        <br>
+        Y a Rien
+        {% endif  %}
 </div>
 
+    {% for results in professeur%}
+<a href="/dashboard/{{results.grade_code}}/{{results.idx}}/comment"> Voir Les Commentaires</a>
+    {% endfor %}
 </body>
 </html>
