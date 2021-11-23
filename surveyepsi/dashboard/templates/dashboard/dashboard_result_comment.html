@@ -10,14 +10,37 @@
         {{question.0}}
         </h2>
 
-            {% for results in answer %}
+            {% for results in answer1 %}
             <h4>{{ results.response }}</h4>
             {%endfor%}
-            <br>
-            <br>
-            <br>
+
+        <h2>
+        {{question.4}}
+        </h2>
+
+            {% for results in answer5 %}
+            <h4>{{ results.response }}</h4>
+            {%endfor%}
+
+        <h2>
+        {{question.9}}
+        </h2>
+
+            {% for results in answer10 %}
+            <h4>{{ results.response }}</h4>
+            {%endfor%}
+
+        <h2>
+        {{question.15}}
+        </h2>
+            {% for results in answer16 %}
+            <h4>{{ results.response }}</h4>
+            {%endfor%}
 
         </div>
 
+    {% for results in professeur%}
+<a href="/dashboard/{{results.grade_code}}/{{results.idx}}/"> Voir Les QCMs</a>
+    {% endfor %}
 </body>
 </html>

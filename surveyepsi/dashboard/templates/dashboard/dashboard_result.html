@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .chartBox1 {
+        .chartBox {
             width:300px;
         }
     </style>
@@ -22,27 +22,28 @@
         --------------------------------------------------------
         <h3> Question 2 </h3>
         --------------------------------------------------------
-        {% if answer_list %}
+        {% if answer %}
 
         <h1>QCM - 1), 5), 10) 16) => Next Page</h1>
-        <h2>{{answer_list | length}} Réponses Reçues </h2>
+        <h2>{{etudiant_count }} Réponses Reçues </h2>
         ----------------------------------------------------
-            <div class="qcm1">
+    <div class="qcm">
+        <div class="qcm1">
             <h2>{{question.1}}</h2>
-            <div class="chartBox1">
-                <canvas id="myChart"></canvas>
+            <div class="chartBox">
+                <canvas id="myChart1"></canvas>
             </div>
             <div>
                     <p> Pas Satisfait : {{q2_pas | length}}
                     || Peu Satisfait : {{q2_peu | length }}
                     || Assez Satisfait : {{q2_assez | length }}
                     || Très Satisfait : {{q2_tres | length }} </p>
+
             </div>
             <script>
+            const ctx1 = document.getElementById('myChart1').getContext('2d');
 
-            const ctx = document.getElementById('myChart').getContext('2d');
-
-            const myChart = new Chart(ctx, {
+            const myChart1 = new Chart(ctx1, {
                 type: 'pie',
                 data: {
                     labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
@@ -68,50 +69,458 @@
             });
             </script>
         </div>
-        <div>
+        <div class="qcm2">
             <h2>{{question.2}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart2"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q3_pas | length}}
+                    || Peu Satisfait : {{q3_peu | length }}
+                    || Assez Satisfait : {{q3_assez | length }}
+                    || Très Satisfait : {{q3_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx2 = document.getElementById('myChart2').getContext('2d');
+
+            const myChart2 = new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question3',
+                        data: [{{q3_pas | length}},{{q3_peu | length }}, {{q3_assez | length }}, {{q3_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm3">
             <h2>{{question.3}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart3"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q4_pas | length}}
+                    || Peu Satisfait : {{q4_peu | length }}
+                    || Assez Satisfait : {{q4_assez | length }}
+                    || Très Satisfait : {{q4_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx3 = document.getElementById('myChart3').getContext('2d');
+
+            const myChart3 = new Chart(ctx3, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question4',
+                        data: [{{q4_pas | length}},{{q4_peu | length }}, {{q4_assez | length }}, {{q4_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm4">
             <h2>{{question.5}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart4"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q6_pas | length}}
+                    || Peu Satisfait : {{q6_peu | length }}
+                    || Assez Satisfait : {{q6_assez | length }}
+                    || Très Satisfait : {{q6_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx4 = document.getElementById('myChart4').getContext('2d');
+
+            const myChart4 = new Chart(ctx4, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question6',
+                        data: [{{q6_pas | length}},{{q6_peu | length }}, {{q6_assez | length }}, {{q6_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm5">
             <h2>{{question.6}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart5"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q7_pas | length}}
+                    || Peu Satisfait : {{q7_peu | length }}
+                    || Assez Satisfait : {{q7_assez | length }}
+                    || Très Satisfait : {{q7_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx5 = document.getElementById('myChart5').getContext('2d');
+
+            const myChart5 = new Chart(ctx5, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question7',
+                        data: [{{q7_pas | length}},{{q7_peu | length }}, {{q7_assez | length }}, {{q7_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm6">
             <h2>{{question.7}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart6"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q8_pas | length}}
+                    || Peu Satisfait : {{q8_peu | length }}
+                    || Assez Satisfait : {{q8_assez | length }}
+                    || Très Satisfait : {{q8_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx6 = document.getElementById('myChart6').getContext('2d');
+
+            const myChart6 = new Chart(ctx6, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question8',
+                        data: [{{q8_pas | length}},{{q8_peu | length }}, {{q8_assez | length }}, {{q8_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm7">
             <h2>{{question.8}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart7"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q9_pas | length}}
+                    || Peu Satisfait : {{q9_peu | length }}
+                    || Assez Satisfait : {{q9_assez | length }}
+                    || Très Satisfait : {{q9_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx7 = document.getElementById('myChart7').getContext('2d');
+
+            const myChart7 = new Chart(ctx7, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question9',
+                        data: [{{q9_pas | length}},{{q9_peu | length }}, {{q9_assez | length }}, {{q9_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm8">
             <h2>{{question.10}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart8"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q11_pas | length}}
+                    || Peu Satisfait : {{q11_peu | length }}
+                    || Assez Satisfait : {{q11_assez | length }}
+                    || Très Satisfait : {{q11_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx8 = document.getElementById('myChart8').getContext('2d');
+
+            const myChart8 = new Chart(ctx8, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question11',
+                        data: [{{q11_pas | length}},{{q11_peu | length }}, {{q11_assez | length }}, {{q11_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm9">
             <h2>{{question.11}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart9"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q12_pas | length}}
+                    || Peu Satisfait : {{q12_peu | length }}
+                    || Assez Satisfait : {{q12_assez | length }}
+                    || Très Satisfait : {{q12_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx9 = document.getElementById('myChart9').getContext('2d');
+
+            const myChart9 = new Chart(ctx9, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question12',
+                        data: [{{q12_pas | length}},{{q12_peu | length }}, {{q12_assez | length }}, {{q12_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm10">
             <h2>{{question.12}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart10"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q13_pas | length}}
+                    || Peu Satisfait : {{q13_peu | length }}
+                    || Assez Satisfait : {{q13_assez | length }}
+                    || Très Satisfait : {{q13_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx10 = document.getElementById('myChart10').getContext('2d');
+
+            const myChart10 = new Chart(ctx10, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question13',
+                        data: [{{q13_pas | length}},{{q13_peu | length }}, {{q13_assez | length }}, {{q13_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm11">
             <h2>{{question.13}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart11"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q14_pas | length}}
+                    || Peu Satisfait : {{q14_peu | length }}
+                    || Assez Satisfait : {{q14_assez | length }}
+                    || Très Satisfait : {{q14_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx11 = document.getElementById('myChart11').getContext('2d');
+
+            const myChart11 = new Chart(ctx11, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question14',
+                        data: [{{q14_pas | length}},{{q14_peu | length }}, {{q14_assez | length }}, {{q14_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
-        <div>
+        <div class="qcm12">
             <h2>{{question.14}}</h2>
+            <div class="chartBox">
+                <canvas id="myChart12"></canvas>
+            </div>
+            <div>
+                    <p> Pas Satisfait : {{q15_pas | length}}
+                    || Peu Satisfait : {{q15_peu | length }}
+                    || Assez Satisfait : {{q15_assez | length }}
+                    || Très Satisfait : {{q15_tres | length }} </p>
 
+            </div>
+            <script>
+            const ctx12 = document.getElementById('myChart12').getContext('2d');
+
+            const myChart12 = new Chart(ctx12, {
+                type: 'pie',
+                data: {
+                    labels: ['Pas Satisfait', 'Peu Satisfait', 'Assez Satisfait', 'Très Satisfait',],
+                    datasets: [{
+                        label: 'Question15',
+                        data: [{{q15_pas | length}},{{q15_peu | length }}, {{q15_assez | length }}, {{q15_tres | length }}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+            </script>
         </div>
+    </div>
         {% else %}
         <br>
         Y a Rien
