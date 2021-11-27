@@ -3,7 +3,6 @@ from .models import Professeur, Grade, Question, Answer, Etudiant
 
 
 # Create your views here.
-
 def index(request):
     print("select1.html")
 
@@ -13,20 +12,22 @@ def index(request):
     return render(request, "survey/select1.html", context)
 
 
-def detail(request, grade_code):
+def detail(request, grade):
     '''
     By grade, we show the professeurs et their cours
 '''
 
-    professeur = Professeur.objects.all().filter(grade_code=grade_code)
+    professeur = Professeur.objects.all().filter(grade=grade)
     context = {'professeur': professeur}
+
+    print(professeur)
+
     return render(request, "survey/select2.html", context)
 
 
-def survey(request, grade_code, idx):
-    professeur = Professeur.objects.filter(grade_code = grade_code).filter(idx = idx)
+def survey(request, grade, idx):
+    professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
     question = Question.objects.all()
-
 
 
     context = {'professeur': professeur,
@@ -35,7 +36,7 @@ def survey(request, grade_code, idx):
     return render(request, "survey/survey.html", context)
 
 
-def success(request, grade_code, idx):
+def success(request, grade, idx):
     ''' Etudiant'''
     professeur = get_object_or_404(Professeur, pk=idx)
     etudiant = Etudiant(professeur_idx_id=professeur.idx)
@@ -86,10 +87,8 @@ def success(request, grade_code, idx):
     answer15.save()
     answer16.save()
 
+    professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
 
-
-    professeur = Professeur.objects.filter(grade_code = grade_code).filter(idx = idx)
     context = {'professeur': professeur}
-
 
     return render(request, "survey/success.html", context)

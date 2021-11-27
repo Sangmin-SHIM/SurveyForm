@@ -19,7 +19,6 @@ class ProfesseurAdmin(admin.ModelAdmin):
             p.grade_code = 4
         else:
             p.grade_code = 5
-
         p.save()
 
     readonly_fields = ["grade_code"]

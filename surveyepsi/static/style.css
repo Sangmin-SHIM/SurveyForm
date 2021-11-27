@@ -1,0 +1,201 @@
+@import  {% include "static 'reboot.css" %}
+@import {% include "static 'responsive.css" %}
+
+/* Global Settings */
+:root {
+  /* Color */
+  --color-red: #d83f87;
+  --color-light-black: #2a1b3d;
+  --color-purple: #44318d;
+  --color-light-purple: #e98074;
+  --color-dark-green: #a4b3b6;
+  --color-skyblue: #e4f1f9;
+  --color-gray: #e4e2e9;
+  --color-black: #222629;
+  --color-white: white;
+
+  /* RGB */
+  --color-epsi-main: 39, 21, 73;
+  --color-epsi-second: 253, 206, 55;
+  --color-shadow: 143, 129, 129;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("pattern1.png");
+}
+
+
+/* Grade - select1.html (survey)*/
+
+.grade {
+  margin: 0 10%;
+}
+
+.grade h1 {
+  text-align: center;
+  margin: 10px;
+  color: var(--color-white);
+}
+
+.grade_select {
+  padding: 10px;
+  background-color: #e4e2e9;
+  height: 70%;
+  margin-bottom: 30px;
+  line-height: 196px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  background: rgba(39, 21, 73, 0.6);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 10px 10px 0px;
+  box-shadow: 20px 20px 50px rgba(143, 129, 129, 0.5);
+}
+
+.card h2 {
+  position: absolute;
+  top: -13%;
+  right: 32%;
+}
+
+.card4 h2,
+.card5 h2 {
+  position: absolute;
+  top: -15%;
+  right: 33%;
+}
+
+.grade_select {
+  border-radius: 5px;
+  opacity: 0.9;
+}
+
+.card1 {
+  background-image: url("canvas1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card2 {
+  background-image: url("canvas2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card3 {
+  background-image: url("canvas3.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card4 {
+  background-image: url("canvas4.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card5 {
+  background-image: url("canvas5.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rhombus {
+  position: absolute;
+  display: flex;
+  top: -5%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(253, 206, 55, 0.9);
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 50% 100%, 0 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 50% 100%, 0 25%);
+  color: #222629;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  position: relative;
+  background-color: rgba(253, 206, 55, 1);
+  border-radius: 5px;
+  border: 0px;
+
+  /* Design with JS */
+  display: inline-flex;
+  padding: 10px 30px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background: white;
+  transition: width 0.5s, height 0.5s;
+}
+.button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.button span {
+  color: #2a1b3d;
+  position: relative;
+  z-index: 1;
+}
+
+/* Fin Grade - select1.html (survey)*/
+
+
+
+/* Media Query */
+@media only screen and (max-width: 259px) {
+
+  /* Card */
+  .card1 h2,
+  .card2 h2,
+  .card3 h2{
+    top: -12% !important;
+    right: 28% !important;
+
+  }
+
+  .card4 h2,
+  .card5 h2 {
+  position: absolute;
+  top: -12% !important;
+  right: 27% !important;
+    }
+}

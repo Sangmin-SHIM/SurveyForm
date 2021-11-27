@@ -4,12 +4,28 @@ from django.db import models
 # Create your models here.
 class Professeur(models.Model):
 
+    coursChoices = (
+        ('B1','B1'),
+        ('B2', 'B2'),
+        ('B3', 'B3'),
+        ('I1', 'I1'),
+        ('I2', 'I2'),
+    )
+
     idx = models.AutoField(primary_key=True)
     professeur = models.CharField(max_length=30)
-    grade = models.CharField(max_length=10)
+    grade = models.CharField(max_length=10, choices=coursChoices)
     grade_code = models.IntegerField(null=True)
     cours_donne = models.CharField(max_length=30)
 
+
+
+    # Capitalized
+    def save(self, *args, **kwargs):
+        self.professeur = self.professeur.upper()
+        self.grade = self.grade.upper()
+        self.cours_donne = self.cours_donne.upper()
+        return super(Professeur, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Professeur"

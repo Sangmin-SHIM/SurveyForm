@@ -3,7 +3,7 @@
     {% for results in professeur %}
 
 <h1>{{ results.professeur }}</h1>
-<div><a href="/epsi/{{results.grade_code}}/{{results.idx}}">{{ results.cours_donne }}</a></div>
+<div><a href="/epsi/{{results.grade}}/{{results.idx}}">{{ results.cours_donne }}</a></div>
     {%endfor%}
 {% else %}
     <p> No Professeurs</p>

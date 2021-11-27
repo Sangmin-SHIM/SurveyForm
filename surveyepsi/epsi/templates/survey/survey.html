@@ -11,7 +11,7 @@
 <h3> {{result.grade}}</h3>
     {% endfor%}
 
-<form action = "/epsi/{{professeur.0.grade_code}}/{{professeur.0.idx}}/success/" method="post">
+<form action = "/epsi/{{professeur.0.grade}}/{{professeur.0.idx}}/success/" method="post">
 
     {% csrf_token%}
     {{question.0}}
