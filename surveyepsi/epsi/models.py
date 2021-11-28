@@ -12,7 +12,7 @@ class Professeur(models.Model):
         ('I2', 'I2'),
     )
 
-    idx = models.AutoField(primary_key=True)
+    idx = models.AutoField(primary_key=True,default='0')
     professeur = models.CharField(max_length=30)
     grade = models.CharField(max_length=10, choices=coursChoices)
     grade_code = models.IntegerField(null=True)
@@ -44,7 +44,7 @@ class Question(models.Model):
         return self.question
 
 class Etudiant(models.Model):
-    idx = models.AutoField(primary_key=True)
+    idx = models.AutoField(primary_key=True,default='0')
     professeur_idx = models.ForeignKey("Professeur",on_delete=models.CASCADE)
 
     class Meta:
@@ -56,8 +56,8 @@ class Etudiant(models.Model):
 class Answer(models.Model):
     idx = models.AutoField(primary_key=True)
     response = models.CharField(max_length=120)
-    question_idx = models.ForeignKey("Question", on_delete=models.CASCADE)
-    etudiant_idx = models.ForeignKey("Etudiant", on_delete=models.CASCADE)
+    question_idx = models.ForeignKey("Question", on_delete=models.CASCADE,default='0')
+    etudiant_idx = models.ForeignKey("Etudiant", on_delete=models.CASCADE,default='0')
     professeur_idx = models.ForeignKey("Professeur", on_delete=models.CASCADE,default='0')
 
     class Meta:

@@ -42,10 +42,6 @@ def success(request, grade, idx):
     etudiant = Etudiant(professeur_idx_id=professeur.idx)
     etudiant.save()
 
-    ''' Answer'''
-    print("etudiant")
-    ''' etuidnat의 idx'''
-
     answer1 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=1, professeur_idx_id=idx, response=request.POST.get('content1'))
 
     answer2 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=2, professeur_idx_id=idx, response=request.POST.get('question2'))
@@ -86,6 +82,9 @@ def success(request, grade, idx):
     answer14.save()
     answer15.save()
     answer16.save()
+
+
+
 
     professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
 

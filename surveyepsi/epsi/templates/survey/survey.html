@@ -1,189 +1,520 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% for result in professeur %}
-<h1> {{result.professeur}}</h1>
-<h2> {{result.cours_donne}}</h2>
-<h3> {{result.grade}}</h3>
-    {% endfor%}
+{% extends 'base.html' %}
+{% load static%}
 
-<form action = "/epsi/{{professeur.0.grade}}/{{professeur.0.idx}}/success/" method="post">
+{% block content %}
 
-    {% csrf_token%}
-    {{question.0}}
-    <br>
-    <textarea name="content1" id="content1" row="15"></textarea>
-    <br>
-    <br>
+    <!-- Section : Survey -->
+    <section class="survey">
+        <div class="information">
+            {% for result in professeur %}
 
-    {{question.1}}
-    <br>
-    <input type="radio" id="question2_1" name="question2" value="Pas Satisfait" required>
-    <label for="question2_1">Pas Satisfait</label><br>
-    <input type="radio" id="question2_2" name="question2" value="Peu Satisfait">
-    <label for="question2_2">Peu Satisfait</label><br>
-    <input type="radio" id="question2_3" name="question2" value="Assez Satisfait">
-    <label for="question2_3">Assez Satisfait</label><br>
-    <input type="radio" id="question2_4" name="question2" value="Très Satisfait">
-    <label for="question2_4">Très Satisfait</label><br><br>
-    <br>
+            <h1>{{result.professeur}}</h1>
+            <h2>{{result.cours_donne}}</h2>
+            <h3>{{result.grade}}</h3>
 
-    {{question.2}}
-    <br>
-    <input type="radio" id="question3_1" name="question3" value="Pas Satisfait" required>
-    <label for="question3_1">Pas Satisfait</label><br>
-    <input type="radio" id="question3_2" name="question3" value="Peu Satisfait">
-    <label for="question3_2">Peu Satisfait</label><br>
-    <input type="radio" id="question3_3" name="question3" value="Assez Satisfait">
-    <label for="question3_3">Assez Satisfait</label><br>
-    <input type="radio" id="question3_4" name="question3" value="Très Satisfait">
-    <label for="question3_4">Très Satisfait</label><br><br>
-    <br>
+            {% endfor%}
 
-    {{question.3}}
-    <br>
-    <input type="radio" id="question4_1" name="question4" value="Pas Satisfait" required>
-    <label for="question4_1">Pas Satisfait</label><br>
-    <input type="radio" id="question4_2" name="question4" value="Peu Satisfait">
-    <label for="question4_2">Peu Satisfait</label><br>
-    <input type="radio" id="question4_3" name="question4" value="Assez Satisfait">
-    <label for="question4_3">Assez Satisfait</label><br>
-    <input type="radio" id="question4_4" name="question4" value="Très Satisfait">
-    <label for="question4_4">Très Satisfait</label><br><br>
-    <br>
+            <div class="rhombus">
+                <i class="fas fa-angle-double-down"></i>
+            </div>
+            <div class="frame frame_left_top"></div>
+            <div class="frame frame_right_top"></div>
 
-    {{question.4}}
-    <br>
-    <textarea name="content2" id="content2" row="15"></textarea>
-    <br>
-    <br>
 
-    {{question.5}}
-    <br>
-    <input type="radio" id="question5_1" name="question5" value="Pas Satisfait" required>
-    <label for="question5_1">Pas Satisfait</label><br>
-    <input type="radio" id="question5_2" name="question5" value="Peu Satisfait">
-    <label for="question5_2">Peu Satisfait</label><br>
-    <input type="radio" id="question5_3" name="question5" value="Assez Satisfait" >
-    <label for="question5_3">Assez Satisfait</label><br>
-    <input type="radio" id="question5_4" name="question5" value="Très Satisfait">
-    <label for="question5_4">Très Satisfait</label><br><br>
-    <br>
+        </div>
+    <form action = "/epsi/{{professeur.0.grade}}/{{professeur.0.idx}}/success/" method="post">
 
-    {{question.6}}
-    <br>
-    <input type="radio" id="question6_1" name="question6" value="Pas Satisfait" required>
-    <label for="question6_1">Pas Satisfait</label><br>
-    <input type="radio" id="question6_2" name="question6" value="Peu Satisfait">
-    <label for="question6_2">Peu Satisfait</label><br>
-    <input type="radio" id="question6_3" name="question6" value="Assez Satisfait">
-    <label for="question4_3">Assez Satisfait</label><br>
-    <input type="radio" id="question6_4" name="question6" value="Très Satisfait">
-    <label for="question6_4">Très Satisfait</label><br><br>
-    <br>
+        {% csrf_token%}
 
-    {{question.7}}
-    <br>
-    <input type="radio" id="question7_1" name="question7" value="Pas Satisfait" required>
-    <label for="question7_1">Pas Satisfait</label><br>
-    <input type="radio" id="question7_2" name="question7" value="Peu Satisfait">
-    <label for="question7_2">Peu Satisfait</label><br>
-    <input type="radio" id="question7_3" name="question7" value="Assez Satisfait">
-    <label for="question7_3">Assez Satisfait</label><br>
-    <input type="radio" id="question7_4" name="question7" value="Très Satisfait">
-    <label for="question7_4">Très Satisfait</label><br><br>
-    <br>
+        <div class="survey_content">
+            <!--1-->
+            <div class="textarea">
+                <div class="question question_textarea">
+                    <p>    {{question.0}} </p>
+                </div>
+                <div class="answer answer_textarea">
+                    <textarea name="content1" id="content1" cols="40" rows="5" class="textarea_content"></textarea>
+                </div>
+            </div>
 
-    {{question.8}}
-    <br>
-    <input type="radio" id="question8_1" name="question8" value="Pas Satisfait" required>
-    <label for="question8_1">Pas Satisfait</label><br>
-    <input type="radio" id="question8_2" name="question8" value="Peu Satisfait">
-    <label for="question8_2">Peu Satisfait</label><br>
-    <input type="radio" id="question8_3" name="question8" value="Assez Satisfait">
-    <label for="question8_3">Assez Satisfait</label><br>
-    <input type="radio" id="question8_4" name="question8" value="Très Satisfait">
-    <label for="question8_4">Très Satisfait</label><br><br>
-    <br>
+            <div>
+                <hr class="separator">
+            </div>
 
-    {{question.9}}
-    <br>
-    <textarea name="content3" id="content3" row="15"></textarea>
-    <br>
-    <br>
+            <!--2-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.1}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question2" id="question2_1" value="Pas Satisfait" required>
+                        <label for="question2_1">Pas Satisfait</label>
+                        <input type="radio" name="question2" id="question2_2" value="Peu Satisfait" required>
+                        <label for="question2_2">Peu Satisfait</label>
+                        <input type="radio" name="question2" id="question2_3" value="Assez Satisfait" required>
+                        <label for="question2_3">Assez Satisfait</label>
+                        <input type="radio" name="question2" id="question2_4" value="Très Satisfait" required>
+                        <label for="question2_4">Très Satisfait</label>
+                    </div>
 
-    {{question.10}}
-    <br>
-    <input type="radio" id="question9_1" name="question9" value="Pas Satisfait" required>
-    <label for="question9_1">Pas Satisfait</label><br>
-    <input type="radio" id="question9_2" name="question9" value="Peu Satisfait">
-    <label for="question9_2">Peu Satisfait</label><br>
-    <input type="radio" id="question9_3" name="question9" value="Assez Satisfait">
-    <label for="question9_3">Assez Satisfait</label><br>
-    <input type="radio" id="question9_4" name="question9" value="Très Satisfait">
-    <label for="question9_4">Très Satisfait</label><br><br>
-    <br>
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question2" id="question2_5" value="Pas Satisfait" required>
+                        <label for="question2_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question2" id="question2_6" value="Peu Satisfait" required>
+                        <label for="question2_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question2" id="question2_7" value="Assez Satisfait" required>
+                        <label for="question2_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question2" id="question2_8" value="Très Satisfait" required>
+                        <label for="question2_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
 
-    {{question.11}}
-    <br>
-    <input type="radio" id="question10_1" name="question10" value="Pas Satisfait" required>
-    <label for="question10_1">Pas Satisfait</label><br>
-    <input type="radio" id="question10_2" name="question10" value="Peu Satisfait">
-    <label for="question10_2">Peu Satisfait</label><br>
-    <input type="radio" id="question10_3" name="question10" value="Assez Satisfait">
-    <label for="question10_3">Assez Satisfait</label><br>
-    <input type="radio" id="question10_4" name="question10" value="Très Satisfait">
-    <label for="question10_4">Très Satisfait</label><br><br>
-    <br>
+            <div>
+                <hr class="separator">
+            </div>
 
-    {{question.12}}
-    <br>
-    <input type="radio" id="question11_1" name="question11" value="Pas Satisfait" required>
-    <label for="question11_1">Pas Satisfait</label><br>
-    <input type="radio" id="question11_2" name="question11" value="Peu Satisfait">
-    <label for="question11_2">Peu Satisfait</label><br>
-    <input type="radio" id="question11_3" name="question11" value="Assez Satisfait">
-    <label for="question11_3">Assez Satisfait</label><br>
-    <input type="radio" id="question11_4" name="question11" value="Très Satisfait">
-    <label for="question11_4">Très Satisfait</label><br><br>
-    <br>
+            <!--3-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.2}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question3" id="question3_1" value="Pas Satisfait" required>
+                        <label for="question3_1">Pas Satisfait</label>
+                        <input type="radio" name="question3" id="question3_2" value="Peu Satisfait" required>
+                        <label for="question3_2">Peu Satisfait</label>
+                        <input type="radio" name="question3" id="question3_3" value="Assez Satisfait" required>
+                        <label for="question3_3">Assez Satisfait</label>
+                        <input type="radio" name="question3" id="question3_4" value="Très Satisfait" required>
+                        <label for="question3_4">Très Satisfait</label>
+                    </div>
 
-    {{question.13}}
-    <br>
-    <input type="radio" id="question12_1" name="question12" value="Pas Satisfait" required>
-    <label for="question12_1">Pas Satisfait</label><br>
-    <input type="radio" id="question12_2" name="question12" value="Peu Satisfait">
-    <label for="question12_2">Peu Satisfait</label><br>
-    <input type="radio" id="question12_3" name="question12" value="Assez Satisfait">
-    <label for="question12_3">Assez Satisfait</label><br>
-    <input type="radio" id="question12_4" name="question12" value="Très Satisfait">
-    <label for="question12_4">Très Satisfait</label><br><br>
-    <br>
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question3" id="question3_5" value="Pas Satisfait" required>
+                        <label for="question3_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question3" id="question3_6" value="Peu Satisfait" required>
+                        <label for="question3_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question3" id="question3_7" value="Assez Satisfait" required>
+                        <label for="question3_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question3" id="question3_8" value="Très Satisfait" required>
+                        <label for="question3_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
 
-    {{question.14}}
-    <br>
-    <input type="radio" id="question13_1" name="question13" value="Pas Satisfait" required>
-    <label for="question13_1">Pas Satisfait</label><br>
-    <input type="radio" id="question13_2" name="question13" value="Peu Satisfait">
-    <label for="question13_2">Peu Satisfait</label><br>
-    <input type="radio" id="question13_3" name="question13" value="Assez Satisfait">
-    <label for="question13_3">Assez Satisfait</label><br>
-    <input type="radio" id="question13_4" name="question13" value="Très Satisfait">
-    <label for="question13_4">Très Satisfait</label><br><br>
-    <br>
+            <div>
+                <hr class="separator">
+            </div>
 
-    {{question.15}}
-    <br>
-    <textarea name="content4" id="content4" row="15"></textarea>
-    <br>
-    <br>
+            <!--4-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.3}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question4" id="question4_1" value="Pas Satisfait" required>
+                        <label for="question4_1">Pas Satisfait</label>
+                        <input type="radio" name="question4" id="question4_2" value="Peu Satisfait" required>
+                        <label for="question4_2">Peu Satisfait</label>
+                        <input type="radio" name="question4" id="question4_3" value="Assez Satisfait" required>
+                        <label for="question4_3">Assez Satisfait</label>
+                        <input type="radio" name="question4" id="question4_4" value="Très Satisfait" required>
+                        <label for="question4_4">Très Satisfait</label>
+                    </div>
 
-<input type="submit" value="Envoyer">
-</form>
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question4" id="question4_5" value="Pas Satisfait" required>
+                        <label for="question4_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question4" id="question4_6" value="Peu Satisfait" required>
+                        <label for="question4_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question4" id="question4_7" value="Assez Satisfait" required>
+                        <label for="question4_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question4" id="question4_8" value="Très Satisfait" required>
+                        <label for="question4_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
 
-</body>
-</html>
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--5-->
+            <div class="textarea">
+                <div class="question question_textarea">
+                    <p>    {{question.4}} </p>
+                </div>
+                <div class="answer answer_textarea">
+                    <textarea name="content2" id="content2" cols="40" rows="5" class="textarea_content"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--6-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.5}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question5" id="question5_1" value="Pas Satisfait" required>
+                        <label for="question5_1">Pas Satisfait</label>
+                        <input type="radio" name="question5" id="question5_2" value="Peu Satisfait" required>
+                        <label for="question5_2">Peu Satisfait</label>
+                        <input type="radio" name="question5" id="question5_3" value="Assez Satisfait" required>
+                        <label for="question5_3">Assez Satisfait</label>
+                        <input type="radio" name="question5" id="question5_4" value="Très Satisfait" required>
+                        <label for="question5_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question5" id="question5_5" value="Pas Satisfait" required>
+                        <label for="question5_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question5" id="question5_6" value="Peu Satisfait" required>
+                        <label for="question5_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question5" id="question5_7" value="Assez Satisfait" required>
+                        <label for="question5_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question5" id="question5_8" value="Très Satisfait" required>
+                        <label for="question5_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--7-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.6}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question6" id="question6_1" value="Pas Satisfait" required>
+                        <label for="question6_1">Pas Satisfait</label>
+                        <input type="radio" name="question6" id="question6_2" value="Peu Satisfait" required>
+                        <label for="question6_2">Peu Satisfait</label>
+                        <input type="radio" name="question6" id="question6_3" value="Assez Satisfait" required>
+                        <label for="question6_3">Assez Satisfait</label>
+                        <input type="radio" name="question6" id="question6_4" value="Très Satisfait" required>
+                        <label for="question6_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question6" id="question6_5" value="Pas Satisfait" required>
+                        <label for="question6_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question6" id="question6_6" value="Peu Satisfait" required>
+                        <label for="question6_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question6" id="question6_7" value="Assez Satisfait" required>
+                        <label for="question6_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question6" id="question6_8" value="Très Satisfait" required>
+                        <label for="question6_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--8-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.7}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question7" id="question7_1" value="Pas Satisfait" required>
+                        <label for="question7_1">Pas Satisfait</label>
+                        <input type="radio" name="question7" id="question7_2" value="Peu Satisfait" required>
+                        <label for="question7_2">Peu Satisfait</label>
+                        <input type="radio" name="question7" id="question7_3" value="Assez Satisfait" required>
+                        <label for="question7_3">Assez Satisfait</label>
+                        <input type="radio" name="question7" id="question7_4" value="Très Satisfait" required>
+                        <label for="question7_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question7" id="question7_5" value="Pas Satisfait" required>
+                        <label for="question7_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question7" id="question7_6" value="Peu Satisfait" required>
+                        <label for="question7_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question7" id="question7_7" value="Assez Satisfait" required>
+                        <label for="question7_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question7" id="question7_8" value="Très Satisfait" required>
+                        <label for="question7_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--9-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.8}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question8" id="question8_1" value="Pas Satisfait" required>
+                        <label for="question8_1">Pas Satisfait</label>
+                        <input type="radio" name="question8" id="question8_2" value="Peu Satisfait" required>
+                        <label for="question8_2">Peu Satisfait</label>
+                        <input type="radio" name="question8" id="question8_3" value="Assez Satisfait" required>
+                        <label for="question8_3">Assez Satisfait</label>
+                        <input type="radio" name="question8" id="question8_4" value="Très Satisfait" required>
+                        <label for="question8_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question8" id="question8_5" value="Pas Satisfait" required>
+                        <label for="question8_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question8" id="question8_6" value="Peu Satisfait" required>
+                        <label for="question8_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question8" id="question8_7" value="Assez Satisfait" required>
+                        <label for="question8_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question8" id="question8_8" value="Très Satisfait" required>
+                        <label for="question8_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--10-->
+            <div class="textarea">
+                <div class="question question_textarea">
+                    <p>    {{question.9}} </p>
+                </div>
+                <div class="answer answer_textarea">
+                    <textarea name="content3" id="content3" cols="40" rows="5" class="textarea_content"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--11-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.10}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question9" id="question9_1" value="Pas Satisfait" required>
+                        <label for="question9_1">Pas Satisfait</label>
+                        <input type="radio" name="question9" id="question9_2" value="Peu Satisfait" required>
+                        <label for="question9_2">Peu Satisfait</label>
+                        <input type="radio" name="question9" id="question9_3" value="Assez Satisfait" required>
+                        <label for="question9_3">Assez Satisfait</label>
+                        <input type="radio" name="question9" id="question9_4" value="Très Satisfait" required>
+                        <label for="question9_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question9" id="question9_5" value="Pas Satisfait" required>
+                        <label for="question9_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question9" id="question9_6" value="Peu Satisfait" required>
+                        <label for="question9_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question9" id="question9_7" value="Assez Satisfait" required>
+                        <label for="question9_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question9" id="question9_8" value="Très Satisfait" required>
+                        <label for="question9_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--12-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.11}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question10" id="question10_1" value="Pas Satisfait" required>
+                        <label for="question10_1">Pas Satisfait</label>
+                        <input type="radio" name="question10" id="question10_2" value="Peu Satisfait" required>
+                        <label for="question10_2">Peu Satisfait</label>
+                        <input type="radio" name="question10" id="question10_3" value="Assez Satisfait" required>
+                        <label for="question10_3">Assez Satisfait</label>
+                        <input type="radio" name="question10" id="question10_4" value="Très Satisfait" required>
+                        <label for="question10_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question10" id="question10_5" value="Pas Satisfait" required>
+                        <label for="question10_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question10" id="question10_6" value="Peu Satisfait" required>
+                        <label for="question10_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question10" id="question10_7" value="Assez Satisfait" required>
+                        <label for="question10_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question10" id="question10_8" value="Très Satisfait" required>
+                        <label for="question10_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--13-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.12}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question11" id="question11_1" value="Pas Satisfait" required>
+                        <label for="question11_1">Pas Satisfait</label>
+                        <input type="radio" name="question11" id="question11_2" value="Peu Satisfait" required>
+                        <label for="question11_2">Peu Satisfait</label>
+                        <input type="radio" name="question11" id="question11_3" value="Assez Satisfait" required>
+                        <label for="question11_3">Assez Satisfait</label>
+                        <input type="radio" name="question11" id="question11_4" value="Très Satisfait" required>
+                        <label for="question11_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question11" id="question11_5" value="Pas Satisfait" required>
+                        <label for="question11_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question11" id="question11_6" value="Peu Satisfait" required>
+                        <label for="question11_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question11" id="question11_7" value="Assez Satisfait" required>
+                        <label for="question11_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question11" id="question11_8" value="Très Satisfait" required>
+                        <label for="question11_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--14-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.13}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question12" id="question12_1" value="Pas Satisfait" required>
+                        <label for="question12_1">Pas Satisfait</label>
+                        <input type="radio" name="question12" id="question12_2" value="Peu Satisfait" required>
+                        <label for="question12_2">Peu Satisfait</label>
+                        <input type="radio" name="question12" id="question12_3" value="Assez Satisfait" required>
+                        <label for="question12_3">Assez Satisfait</label>
+                        <input type="radio" name="question12" id="question12_4" value="Très Satisfait" required>
+                        <label for="question12_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question12" id="question12_5" value="Pas Satisfait" required>
+                        <label for="question12_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question12" id="question12_6" value="Peu Satisfait" required>
+                        <label for="question12_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question12" id="question12_7" value="Assez Satisfait" required>
+                        <label for="question12_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question12" id="question12_8" value="Très Satisfait" required>
+                        <label for="question12_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+            <!--15-->
+            <div class="qcm">
+                <div class="question question_qcm">
+                    <p>    {{question.14}}</p>
+                </div>
+                <div class="answer answer_qcm">
+                    <div class="qcm_mobile">
+                        <input type="radio" name="question13" id="question13_1" value="Pas Satisfait" required>
+                        <label for="question13_1">Pas Satisfait</label>
+                        <input type="radio" name="question13" id="question13_2" value="Peu Satisfait" required>
+                        <label for="question13_2">Peu Satisfait</label>
+                        <input type="radio" name="question13" id="question13_3" value="Assez Satisfait" required>
+                        <label for="question13_3">Assez Satisfait</label>
+                        <input type="radio" name="question13" id="question13_4" value="Très Satisfait" required>
+                        <label for="question13_4">Très Satisfait</label>
+                    </div>
+
+                    <div class="debt-amount-slider">
+                        <input type="radio" name="question13" id="question13_5" value="Pas Satisfait" required>
+                        <label for="question13_5" data-debt-amount="Pas Satisfait"></label>
+                        <input type="radio" name="question13" id="question13_6" value="Peu Satisfait" required>
+                        <label for="question13_6" data-debt-amount="Peu Satisfait"></label>
+                        <input type="radio" name="question13" id="question13_7" value="Assez Satisfait" required>
+                        <label for="question13_7" data-debt-amount="Assez Satisfait"></label>
+                        <input type="radio" name="question13" id="question13_8" value="Très Satisfait" required>
+                        <label for="question13_8" data-debt-amount="Très Satisfait"></label>
+                        <div class="debt-amount-pos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+             <!--16-->
+            <div class="textarea">
+                <div class="question question_textarea">
+                    <p>    {{question.15}} </p>
+                </div>
+                <div class="answer answer_textarea">
+                    <textarea name="content4" id="content4" cols="40" rows="5" class="textarea_content"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <hr class="separator">
+            </div>
+
+
+        </div>
+        <input type="submit" value="Envoyer" class="envoyer">
+    </form>
+    </section>
+
+
+
+    <section class="for_frame">
+        <div class="frame frame_left_bottom"></div>
+        <div class="frame frame_right_bottom"></div>
+    </section>
+
+
+{%endblock %}

@@ -14,15 +14,33 @@ def detail(request, grade_code):
     return render(request, "dashboard/dashboard_grade.html", context)
 
 def result(request, grade_code, idx):
+
     professeur = Professeur.objects.all().filter(idx=idx)
     question = Question.objects.all()
     answer = Answer.objects.all().filter(professeur_idx_id=idx)
+    etudiant_count = Etudiant.objects.all().filter(professeur_idx_id=idx).count()
+
     ''' Answer de QCM '''
+    answer2=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=2)
+    answer3=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=3)
+    answer4=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=4)
+
+    answer6=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=6)
+    answer7=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=7)
+    answer8=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=8)
+    answer9=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=9)
+
+    answer11=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=11)
+    answer12=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=12)
+    answer13=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=13)
+    answer14=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=14)
+    answer15=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=15)
+
+    '''
     for i in range(1,16):
         if (i != 1 or i != 5 or i != 10 or i != 16):
             globals()['answer' + str(i)] = Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=i)
-
-    etudiant_count = Etudiant.objects.all().filter(professeur_idx_id=idx).count()
+    '''
 
     for i in range(1,16):
         if (i != 1 or i != 5 or i != 10 or i != 16):

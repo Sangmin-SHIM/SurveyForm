@@ -1,10 +1,46 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+
 {% if professeur %}
 
-    {% for results in professeur %}
+    <!-- Section : Cours -->
+    <section class="cours">
+        <h1>Choisissez votre cours</h1>
 
-<h1>{{ results.professeur }}</h1>
-<div><a href="/epsi/{{results.grade}}/{{results.idx}}">{{ results.cours_donne }}</a></div>
-    {%endfor%}
-{% else %}
-    <p> No Professeurs</p>
+        <div class="cards">
+            {% for results in professeur %}
+
+            <div class="card">
+                <div class="cours_select card{{ forloop.counter }}">
+                    <h2 class="prof_name">{{ results.professeur }}</h2>
+                    <div class="lines">
+                        <div class="lines_content"><i class="fas fa-info-circle"></i>  cours</div>
+                    </div>
+                    <h3 class="cours_name">{{ results.cours_donne }}</h3>
+                </div>
+                <div class="rhombus">
+                    <i class="fas fa-angle-double-down"></i>
+                </div>
+                <div>
+                    <a href="/epsi/{{results.grade}}/{{results.idx}}" class="button">
+                        <span>
+
+                            Click
+
+                        </span>
+                    </a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        {% else %}
+        <p> No Professeurs</p>
+    </section>
 {%endif%}
+
+
+
+{% endblock %}
+
