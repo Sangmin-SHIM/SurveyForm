@@ -592,6 +592,26 @@ body {
 
 /* Fin Survey - survey.html (survey)*/
 
+/* Success - Success.html (survey) */
+.success{
+    position: relative;
+    top:0;
+    left:0;
+    transform: translate(0%,150%);
+    }
+.success h1{
+    color : rgba(253, 206, 55);
+}
+.success a{
+    color: #e4e2e9;
+    text-decoration:none;
+    font-size: 20px;
+}
+
+
+/* Fin Success */
+
+
 /* ------------------------------------------ Responsive ------------------------------------------ */
 
 /* Media Query */

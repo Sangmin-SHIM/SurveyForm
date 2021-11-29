@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MERCI BEAUCOUP</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static%}
 
-<h1> MERCI BEAUCOUP ! </h1>
+{% block content %}
 
+<section class="survey success">
+    <div>
+        <h1> MERCI BEAUCOUP ! </h1>
+        <a href="/epsi/{{professeur.0.grade}}/" style=""> Aller aux autres questionnaires</a>
+    </div>
+</section>
 
-<a href="/epsi/{{professeur.0.grade}}/"> Aller aux autres questionnaires</a>
-
-</body>
-</html>
+{%endblock %}
