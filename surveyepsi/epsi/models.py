@@ -44,7 +44,7 @@ class Question(models.Model):
         return self.question
 
 class Etudiant(models.Model):
-    idx = models.AutoField(primary_key=True,default='0')
+    idx = models.AutoField(primary_key=True)
     professeur_idx = models.ForeignKey("Professeur",on_delete=models.CASCADE)
 
     class Meta:
