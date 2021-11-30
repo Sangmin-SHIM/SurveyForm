@@ -176,6 +176,7 @@ def result(request, grade_code, idx):
 def result_comment(request, grade_code, idx):
     question = Question.objects.all()
     professeur = Professeur.objects.all().filter(idx=idx)
+    etudiant_count = Etudiant.objects.all().filter(professeur_idx_id=idx).count()
 
     ''' Answer de Contents '''
     answer1 = Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=1)
@@ -189,5 +190,6 @@ def result_comment(request, grade_code, idx):
                'answer1': answer1,
                'answer5': answer5,
                'answer10': answer10,
-               'answer16': answer16,}
+               'answer16': answer16,
+               'etudiant_count': etudiant_count,}
     return render(request, "dashboard/dashboard_result_comment.html", context)

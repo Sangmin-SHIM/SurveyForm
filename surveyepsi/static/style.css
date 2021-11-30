@@ -53,6 +53,13 @@ body {
   opacity: 0.9;
 }
 
+.cours_name{
+color : rgba(var(--color-epsi-main));
+}
+
+.cours_in_survey{
+color: rgba(var(--color-epsi-second));
+}
 .cards {
   display: flex;
   justify-content: space-evenly;
@@ -193,7 +200,6 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
 .prof_name {
   margin-bottom: 10px;
 }

@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Professeur, Grade, Question, Answer, Etudiant
 from django.db import IntegrityError
@@ -41,10 +40,10 @@ def survey(request, grade, idx):
 def success(request, grade, idx):
     ''' Etudiant'''
     professeur = get_object_or_404(Professeur, pk=idx)
-    etudiant = Etudiant(professeur_idx_id=professeur.idx)
 
 
     try:
+        etudiant = Etudiant(professeur_idx_id=professeur.idx)
         etudiant.save()
         answer1 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=1, professeur_idx_id=idx, response=request.POST.get('content1'))
         answer2 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=2, professeur_idx_id=idx, response=request.POST.get('question2'))
@@ -86,12 +85,11 @@ def success(request, grade, idx):
         answer15.save()
         answer16.save()
 
-    except IntegrityError as e:
-        etudiant.delete()
-        return HttpResponse("ERROR: Error /success Directly Prohibited !")
+    except IntegrityError as i:
+            etudiant.delete()
+            return render("ERROR: Error /success Directly Prohibited !")
 
-        professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
+    professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
+    context = {'professeur': professeur}
 
-        context = {'professeur': professeur}
-
-        return render(request, "survey/success.html", context)
+    return render(request, "survey/success.html", context)

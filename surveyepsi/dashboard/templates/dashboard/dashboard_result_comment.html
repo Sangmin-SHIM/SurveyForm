@@ -1,46 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-        <div>
-        <h2>
-        {{question.0}}
-        </h2>
+{% extends 'base2.html' %}
 
-            {% for results in answer1 %}
-            <h4>{{ results.response }}</h4>
-            {%endfor%}
+{% load static%}
 
-        <h2>
-        {{question.4}}
-        </h2>
 
-            {% for results in answer5 %}
-            <h4>{{ results.response }}</h4>
-            {%endfor%}
+{% block content %}
+<section class="glassmorphism">
+    <div class="container result">
 
-        <h2>
-        {{question.9}}
-        </h2>
+        <div class="card card_result">
+            <div class="content">
+                <div class="contentBx">
+                        {% for results in professeur%}
 
-            {% for results in answer10 %}
-            <h4>{{ results.response }}</h4>
-            {%endfor%}
+                        <h2>    {{results.professeur}}  </h2>
+                        <h3 class="title">    {{results.cours_donne}}  </h3>
 
-        <h2>
-        {{question.15}}
-        </h2>
-            {% for results in answer16 %}
-            <h4>{{ results.response }}</h4>
-            {%endfor%}
+                        {%endfor%}
+                    <h4>{{etudiant_count }} Réponses Reçues </h4>
+
+                </div>
+                <div class="resultBx result1 resultBxTest">
+                    <div class="question question_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                        {{question.0}}
+                    </div>
+                    <div class="answer_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                        {% for results in answer1 %}
+                        <p>({{forloop.counter}}) {{ results.response }}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+                <div class="resultBx result2 resultBxTest">
+                    <div class="question question_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                         {{question.4}}
+                    </div>
+                    <div class="answer_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                        {% for results in answer5 %}
+                        <p>({{forloop.counter}}) {{ results.response }}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+                <div class="resultBx result3 resultBxTest">
+                    <div class="question question_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                          {{question.9}}
+                    </div>
+                    <div class="answer_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                        {% for results in answer10 %}
+                        <p>({{forloop.counter}}) {{ results.response }}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+                <div class="resultBx result4 resultBxTest">
+                    <div class="question question_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                         {{question.15}}
+                    </div>
+                    <div class="answer_textarea xLarge-12 large-12 medium-12 small-12 xSmall-12">
+                        {% for results in answer16 %}
+                        <p>({{forloop.counter}}) {{ results.response }}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Button -->
+            <ul class="sci">
+                <li style="--i:1">
+                        {% for results in professeur%}
+                    <a href="/dashboard/{{results.grade_code}}/{{results.idx}}/" class="button"><i class="fas fa-chevron-circle-right"></i>
+                    </a>
+                </li>
+                <li style="--i:2">
+                    <a href="/dashboard/{{results.grade_code}}/{{results.idx}}/" class="button_click"> Revenir
+                        {% endfor %}
+                    </a>
+                </li>
+            </ul>
 
         </div>
 
-    {% for results in professeur%}
-<a href="/dashboard/{{results.grade_code}}/{{results.idx}}/"> Voir Les QCMs</a>
-    {% endfor %}
-</body>
-</html>
+    </div>
+</section>
+
+
+{%endblock%}

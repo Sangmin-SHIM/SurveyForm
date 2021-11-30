@@ -1,21 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-ICI Professeur avec Grade
-<br>
-<br>
+{% extends 'base2.html' %}
 
-    GRADE:    {{ professeur.0.grade}}
+{% load static%}
+
+
+{% block content %}
+
+
+<!-- Cours -->
+    <section class="glassmorphism">
+        <div class="container">
 
     {% for results in professeur %}
-<h1>{{ results.professeur }}</h1>
-<div><a href="/dashboard/{{results.grade_code}}/{{results.idx}}">{{ results.cours_donne }}</a></div>
+
+            <div class="card cours_card">
+                <div class="content">
+                    <div class="contentBx">
+                        <h3 class="prof_name">{{ results.professeur }}</h3>
+                    </div>
+                    <div class="coursBx">
+                        <a href="/dashboard/{{results.grade_code}}/{{results.idx}}">
+                            <h3 class="title">{{ results.cours_donne }}</h3>
+                        </a>
+                    </div>
+                </div>
+                <ul class="sci">
+                    <li style="--i:1">
+                        <a href="/dashboard/{{results.grade_code}}/{{results.idx}}" class="button"><i class="fas fa-chevron-circle-right"></i>
+                        </a>
+                    </li>
+                    <li style="--i:2">
+                        <a href="/dashboard/{{results.grade_code}}/{{results.idx}}" class="button_click"> Suivant
+                        </a>
+                    </li>
+                </ul>
+            </div>
     {%endfor%}
 
+        </div>
+    </section>
 
-</body>
-</html>
+
+
+{%endblock%}
