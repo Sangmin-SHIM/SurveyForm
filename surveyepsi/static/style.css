@@ -639,9 +639,10 @@ color: rgba(var(--color-epsi-second));
     margin: 0px !important;
   }
 
-  /* Card */
+    /* Card */
   .card h2 {
-    top: -5% !important;
+    top: -14% !important;
+    right: 32% !important;
   }
 
   /* Frame */
@@ -790,7 +791,8 @@ color: rgba(var(--color-epsi-second));
 
   /* Card */
   .card h2 {
-    top: -5% !important;
+    top: -12% !important;
+    right: 32% !important;
   }
 
   /* Frame */
@@ -938,7 +940,8 @@ color: rgba(var(--color-epsi-second));
   }
   /* Card */
   .card h2 {
-    top: -5% !important;
+    top: -12% !important;
+    right: 30% !important;
   }
 
   /* Frame */

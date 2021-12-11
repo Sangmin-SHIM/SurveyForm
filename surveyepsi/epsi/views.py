@@ -1,49 +1,44 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Professeur, Grade, Question, Answer, Etudiant
 from django.db import IntegrityError
+#################################################
+# It's an app for Students to submit the Survey #
+#################################################
 
-
-# Create your views here.
+# First Page : We can select the grade from B1 to I2
 def index(request):
-    print("select1.html")
-
     grade = Grade.objects.all
     context = {'grade' : grade}
 
     return render(request, "survey/select1.html", context)
 
-
+# Second Page : We can select the modules (courses) by grade that we choose
 def detail(request, grade):
-    '''
-    By grade, we show the professeurs et their cours
-'''
 
     professeur = Professeur.objects.all().filter(grade=grade)
     context = {'professeur': professeur}
 
-    print(professeur)
-
     return render(request, "survey/select2.html", context)
 
-
+# Third Page : We can actually be in the Survey Form along the module(course) that we choose
 def survey(request, grade, idx):
     professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
     question = Question.objects.all()
-
 
     context = {'professeur': professeur,
                'question' : question}
 
     return render(request, "survey/survey.html", context)
 
-
+# Fourth Page : If student submit his survey form by POST, the answers will be saved along the question id from 1 to 16
 def success(request, grade, idx):
     ''' Etudiant'''
     professeur = get_object_or_404(Professeur, pk=idx)
 
-
+    # If there is an error when submitting, we throw Exception
     try:
         etudiant = Etudiant(professeur_idx_id=professeur.idx)
+        # It saves etudiant model to make a relation with 16 answers
         etudiant.save()
         answer1 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=1, professeur_idx_id=idx, response=request.POST.get('content1'))
         answer2 = Answer(etudiant_idx_id=etudiant.idx, question_idx_id=2, professeur_idx_id=idx, response=request.POST.get('question2'))
@@ -86,8 +81,13 @@ def success(request, grade, idx):
         answer16.save()
 
     except IntegrityError as i:
-            etudiant.delete()
-            return render("ERROR: Error /success Directly Prohibited !")
+        # When User goes up directly the next page of survey form, like typing directly
+        # (127.0.0.1:8000/epsi/B2/3/success), in this case the method POST would not be generated.
+        # But, student model is still generated (in 45 lines : etudiant.save())
+        # So there will be an issue that student model exists but related with it there are no answers.
+        # It makes IntegrityError. So it has to be deleted here.
+        etudiant.delete()
+        return render("ERROR: Error /success Directly Prohibited !")
 
     professeur = Professeur.objects.filter(grade = grade).filter(idx = idx)
     context = {'professeur': professeur}

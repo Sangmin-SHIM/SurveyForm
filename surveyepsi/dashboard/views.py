@@ -1,18 +1,24 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from epsi.models import Grade, Professeur, Etudiant, Answer, Question
+##########################################################################
+# It's an app for Administration to see the results of students' answers #
+##########################################################################
 
+# First Page : We can select the grade from B1 to I2
 def index(request):
-
     grade = Grade.objects.all
     context= {'grade' : grade}
+
     return render(request,'dashboard/dashboard_index.html', context)
 
+# Second Page : We can select the modules (courses) by grade that we choose
 def detail(request, grade_code):
-
     professeur = Professeur.objects.all().filter(grade_code=grade_code)
     context = {'professeur': professeur}
+
     return render(request, "dashboard/dashboard_grade.html", context)
 
+# Third Page : We can actually see the result of survey with graph (MCQ)
 def result(request, grade_code, idx):
 
     professeur = Professeur.objects.all().filter(idx=idx)
@@ -20,28 +26,13 @@ def result(request, grade_code, idx):
     answer = Answer.objects.all().filter(professeur_idx_id=idx)
     etudiant_count = Etudiant.objects.all().filter(professeur_idx_id=idx).count()
 
-    ''' Answer de QCM '''
-    answer2=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=2)
-    answer3=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=3)
-    answer4=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=4)
-
-    answer6=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=6)
-    answer7=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=7)
-    answer8=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=8)
-    answer9=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=9)
-
-    answer11=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=11)
-    answer12=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=12)
-    answer13=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=13)
-    answer14=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=14)
-    answer15=Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=15)
-
-    '''
+    # answer 1 ~ 16 (except 1, 5, 10, 16) are about MCQ questions. So we can show the results by Graph
     for i in range(1,16):
         if (i != 1 or i != 5 or i != 10 or i != 16):
             globals()['answer' + str(i)] = Answer.objects.all().filter(professeur_idx_id=idx).filter(question_idx_id=i)
-    '''
 
+    # we make 4 lists (_pas, _peu, _assez, _tres) to put the results by sorting. For example, if question2 has 3 answers
+    # like "Pas Satisfait", they would be in the list "q2_pas". In q2_pas has 3.
     for i in range(1,16):
         if (i != 1 or i != 5 or i != 10 or i != 16):
             globals()['q'+str(i)+'_pas'] =[]
@@ -49,6 +40,7 @@ def result(request, grade_code, idx):
             globals()['q' + str(i) + '_assez'] =[]
             globals()['q' + str(i) + '_tres'] =[]
 
+    # for students' number it repeats for putting the answers in 4 lists (_pas, _peu, _assez, _tres)
     for i in range(etudiant_count):
         ''' Pas Satisfait'''
         if (str(answer2[i]) == 'Pas Satisfait'):
@@ -173,6 +165,7 @@ def result(request, grade_code, idx):
 
     return render(request, "dashboard/dashboard_result.html", context)
 
+# Fourth Page : We can actually see the result of survey (Students' Comments)
 def result_comment(request, grade_code, idx):
     question = Question.objects.all()
     professeur = Professeur.objects.all().filter(idx=idx)
