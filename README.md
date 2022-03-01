@@ -11,3 +11,4 @@ Le problème est que les élèves n'ont pas très envie d'ouvrir chaque lien pou
 
 
 2) DASHBOARD : https://surveyepsi.herokuapp.com/dashboard/
+<img width="80%" src="https://user-images.githubusercontent.com/93679283/156221690-57eeafd7-4794-4c45-8f10-605556d6591c.gif">
