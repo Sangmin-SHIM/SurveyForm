@@ -1,6 +1,6 @@
 # SurveyForm
 
-C'est une application Web pour faire un sondage "Questionnaire de Satisfaction" pour la fin des cours d'école EPSI. Elle distribue aux élèves par mail le fichier Excel dans lequel le lien Google Form de chaque cours pour remplir ce questionnaire. 
+À la fin de l'année scolaire, l'école EPSI distribue aux élèves des "questionnaires de satisfaction". Ils sont envoyés par mail sous format Excel, on y trouve un lien Google Form pour chaque cours. Ceoendant le format de ce questionnaire n'est pas pratique d'utilisation pour les élèves. Car ils doivent cliquer sur chaque lien pour répondre au sondage. Ce qui s'avère fastidieux. J'ai donc simplifié ceci en créant une plate-forme sur laquelle les réponses des élèves sont regroupés pour être visualisées d'une manière graphique.
 
 <img width="80%" src="https://user-images.githubusercontent.com/93679283/156184648-9a2f5c93-012f-4a36-9668-836c81555506.JPG">
 
